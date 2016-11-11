@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    Smartdata
+ * @package     Smartdata_Webserivces
+ * @Author      Abhishek Srivastava <abhishek.srivastava@smartdatainc.net>
+ * @copyright   Copyright (c) smartData, Inc. (http://www.smartdatainc.net)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+   <api>
+     <resources>
+     <!-- START CUSTOMER WEBSERVICES RESOURCES -->
+        <webservices_customers>
+            <model>smartdata_webservices/customer_api</model>
+            <title>Customer Webservies</title>
+            <acl>webservices/customers</acl>
+            <methods>
+                <getpref translate="title" module="smartdata_webservices">
+                    <title>Get Prefrence</title>
+                    <method>getpref</method>
+                    <acl>webservices/customers/getpref</acl>
+                </getpref>
+            </methods>
+        </webservices_customers>
+    <!-- END CUSTOMER WEBSERVICES RESOURCES -->
+    <!-- START CATEGORY WEBSERVICES RESOURCES -->
+        <webservices_categories>
+            <model>smartdata_webservices/category_api</model>
+            <title>Category Webservies</title>
+            <acl>webservices/categories</acl>
+            <methods>
+                <list translate="title" module="smartdata_webservices">
+                    <title>Get Categories Images</title>
+                    <method>showItem</method>
+                    <acl>webservices/categories/list</acl>
+                </list>
+                <!-- Another Methods You can use it like below -->
+                <!--<getpref translate="title" module="smartdata_webservices">
+                    <title>Get Prefrence</title>
+                    <method>getpref</method>
+                    <acl>webservices/categories/?</acl>
+                </getpref>-->
+            </methods>
+        </webservices_categories>
+    <!-- END CATEGORY WEBSERVICES RESOURCES -->
+    </resources>
+    <!-- Alias Used it for SOAP V1 calling -->
+    <resources_alias>
+        <webservice_customer>webservices_customers</webservice_customer>
+        <webservice_category>webservices_categories</webservice_category>
+    </resources_alias>
+    <v2>
+        <resources_function_prefix>
+           <webservices_customers>webservicesCustomers</webservices_customers>
+           <webservices_categories>webservicesCategories</webservices_categories>
+        </resources_function_prefix>
+    </v2>
+    <acl><!-- Access Control List  to our resources, this tree structure is displayed in "Resource Roles" panel when you open role to edit -->
+       <resources>
+           <webservices translate="title" module="smartdata_webservices">
+                <title>Webservices</title>
+                <sort_order>4</sort_order>
+                <customers translate="title" module="smartdata_webservices">
+                    <title>Customers</title>
+                    <sort_order>1</sort_order>
+                    <getpref translate="title" module="smartdata_webservices">
+                       <title>Get Prefrences</title>
+                    </getpref>
+                </customers>
+                <categories translate="title" module="smartdata_webservices">
+                    <title>Categories</title>
+                    <sort_order>2</sort_order>
+                    <list translate="title" module="smartdata_webservices">
+                       <title>Get Category Images</title>
+                    </list>
+                </categories>
+           </webservices>
+       </resources>
+    </acl>
+  </api>
+</config>
